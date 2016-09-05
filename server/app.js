@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended:false });
 
 var mostLiked = require('./routes/mostLiked');
 var mostPopular = require('./routes/mostPopular');

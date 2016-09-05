@@ -2,6 +2,12 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+
+// var app = angular.module('myApp', ['ngResource']);
+//
+// app.factory("Post", function($resource) {
+//   return $resource("/api/posts/:id");
+// });
 router.get('/search-api/:search', function (req, res) {
 
   var req = 'https://proofapi.herokuapp.com/videos/ef572226-7b56-401b-89fc-7aa8b3642f27/search?search=' + req.params.search;
@@ -40,7 +46,7 @@ router.get('/get-videos/:id', function (req, res) {
 
 router.post('/votes', function(req, res) {
 GEThttps://proofapi.herokuapp.com/videos/ef572226-7b56-401b-89fc-7aa8b3642f27/votes
-video_id ef572226-7b56-401b-89fc-7aa8b3642f27
+  // video_id ef572226-7b56-401b-89fc-7aa8b3642f27
   var game = req.body;
 
   pg.connect(connectionString, function(error, client, done) {

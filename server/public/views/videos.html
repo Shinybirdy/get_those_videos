@@ -1,0 +1,105 @@
+<!-- All Videos Section  with ng-repeat filtered by newest  - then 2 lists -
+most viewed and most liked with vote buttons next to them -->
+
+<section ng-init = "getNewestVideos()">
+  <h2>Newest Videos</h2>
+  <table st-table="videos" st-safe-src="newest">
+    <thead>
+      <tr>
+        <!--video of videoVontroller or something for angular magic  -->
+        <th colspan="4"><input st-search="" placeholder="Newest Videos" type="text"/></th>
+        <th colspan="3">
+                <label for="filter">Newest Videos Filter: </label>
+                <select name="filter" ng-model="filterBy">
+                  <!--top 10 newest videos uploaded to be filtered by timestamp  -->
+                  <option value="">Vote!Is this funny?</option>
+                  <option value="false">Hilariash!</option>
+                  <option value="true">Not. Funny.</option>
+                </select>
+            </th>
+            </tr>
+          	<tr>
+              <!-- //VIDEO
+              // id         :string   ef572226-7b56-401b-89fc-7aa8b3642f27
+              // title      :string   Human-readable title of the Video "The Mountain"
+              // url        :string   The full URI path to the location of the Video http://vimeo.com/22439234
+              // slug       :string   Machine-readble version of the Video title the-mountain
+              // view_tally :number   Number of times the Video has been viewed 2
+              // vote_tally :number   Sum of the Video's vote-ups and vote-downs 1
+              // created    :string   Created timestamp in ISO 8601 format 2014-04-14T02:15:15Z
+              // updated    :string   Updated timestamp in ISO 8601 format  2014-04-14T02:15:15Z -->
+          		<th>Videos</th>
+          		<th st-sort="title" >Title: {{ video.title }}</th>
+          		<th st-sort="url" >URL: {{ video.url }}</th>
+          		<th st-sort="view_tally" >Number of Views: {{ video.view_tally }}</th>
+          		<th st-sort="vote_tally" >Love It! {{ video.vote_tally.votesUp }} So. Not. Funny. {{ video.vote_tally.votesDown }}</th>
+              <th st-sort="created" >This videos was added on {{ video.created }}</th>
+              <th></th>
+
+      </tr>
+    </thead>
+
+    <tbody ng-if="boardgames.length == 0">
+      <tr>
+        <td colspan="7">Most Viewed Top Ten!</td>
+        <!--First, parse the JSON into an array of Objects:
+
+var data = JSON.parse(json);
+Then combine sort and slice to achieve your goal:
+
+var top10 = data.sort(function(a, b) { return a.Variable1 < b.Variable1 ? 1 : -1; })
+                .slice(0, 10);  -->
+      </tr>
+    </tbody>
+  	<tbody>
+
+    <!--filter by most views  -->
+      <tr ng-repeat="video in videos | filter : video.view_tally = filterBy">
+        <td ng-if="video.view_tally"><img ng-src="{{boardgame.thumbnail}}" ng-click="toggleInfo(video)" /></td>
+        <td ng-if="!boardgame.is_lent">{{boardgame.gamename}}</td>
+        <form ng-model="boardgame">
+          <td ng-if="!boardgame.is_lent"><input type="number" ng-value="{{boardgame.minplayers}}" ng-model="boardgame.minplayers"></td>
+          <td ng-if="!boardgame.is_lent"><input type="number" ng-value="{{boardgame.maxplayers}}" ng-model="boardgame.maxplayers"></td>
+          <td ng-if="!boardgame.is_lent"><input type="number" ng-value="{{boardgame.minplaytime}}" ng-model="boardgame.minplaytime"></td>
+          <td ng-if="!boardgame.is_lent"><input type="number" ng-value="{{boardgame.maxplaytime}}" ng-model="boardgame.maxplaytime"></td>
+        </form>
+        <td ng-if="!boardgame.is_lent">
+          <button ng-click="lendGame(boardgame)">Lend Game</button>
+          <button ng-click="deleteGame(boardgame)">Remove</button>
+          <button ng-click="updateGame(boardgame)">Update</button>
+        </td>
+
+        <td ng-if="boardgame.is_lent"><img ng-src="{{boardgame.thumbnail}}" ng-click="toggleInfo(boardgame)" /></td>
+        <td ng-if="boardgame.is_lent">{{boardgame.gamename}}</td>
+        <td ng-if="boardgame.is_lent" colspan="4">This game is lent out to {{boardgame.person_lent}} since {{boardgame.date_lent | date}}.</td>
+        <td ng-if="boardgame.is_lent">
+          <button ng-click="returnGame(boardgame)">Return Game</button>
+          <button ng-click="deleteGame(boardgame)">Remove</button>
+        </td>
+      </tr>
+  	</tbody>
+  </table>
+</section>
+<!-- Update with Votes -->
+
+<modal-dialog show='modal.update' width='310px' height='150px' dialog-title={{modal.modalGame.gamename.substring(0,20)}}>
+  <p>Are you sure you wish to update this game?</p>
+  <div class="modalButton">
+  <button ng-click='update()'>Yes</button>
+  <button ng-click='modal.update = false'>No</button>
+  </div>
+</modal-dialog>
+
+<modal-dialog show='modal.success' width='310px' height='100px' dialog-title={{modal.modalGame.gamename.substring(0,20)}}>
+  <p>{{modal.successText}}</p>
+</modal-dialog>
+
+<!-- Delete Video Modal -->
+  <modal-dialog show="modal.delete" width="310px" height="150px" dialog-title="{{modal.modalVideo.title.substring(0,20)}}">
+  <p>Are you sure you wish to delete this video from the collection?</p>
+  <div class="modalButton">
+  <button ng-click="delete()">Yes</button>
+  <button ng-click="modal.delete = false">No</button>
+  </div>
+
+</modal-dialog>

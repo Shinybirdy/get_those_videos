@@ -1,9 +1,9 @@
-console.log('hello from client.js');
+console.log('hello from client.js where myAPP is made');
 
-var myApp = angular.module("myApp", ["ngRoute", "smart-table", "ngModal"]);
+var videoApp = angular.module("videoApp", ["ngRoute"]);
 
 //Routes for the site views
-myApp.config(['$routeProvider', function($routeProvider) {
+videoApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
 
     .when('/videos', {
@@ -11,6 +11,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: "videoController"
     })
     .otherwise({
-      redirectTo: 'newest'
+      redirectTo: 'index'
     });
 }]);

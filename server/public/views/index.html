@@ -3,50 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Hilariash</title>
-
-
-    <script type = "text/javascript" src ="/assets/vendors/angular/angular.min.js"></script>
-    <!-- <script type = "text/javascript" src ="/assets/vendors/angular/angular-csp.css"></script> -->
-    <script type = "text/javascript" src ="/assets/vendors/angular/angular.min.js.map"></script>
+    <script type = "text/javascript" src ="/assets/vendors/angular.js"></script>
+    <script type = "text/javascript" src ="./assets/scripts/client.js"></script>
+    <script type = "text/javascript" src = "./assets/scripts/controllers/videoController.js"></script>
+    <!-- <script type = "text/javascript" src ="/assets/vendors/angular-csp.css"></script> -->
     <script type = "text/javascript" src ="/assets/vendors/angular-resource.min.js"></script>
 
     <script type= "text/javascript" src ="/assets/vendors/smart-table.js"></script>
-    <script type= "text/javascript" src ="/assets/vendors/smart-table.min.js"></script>
-    <script type= "text/javascript" src ="/assets/vendors/smart-table.min.js.map"></script>
-
     <script type = "text/javascript" src ="/assets/vendors/angular-route.js"></script>
-    <script type = "text/javascript" src ="/assets/vendors/angular-route.min.js"></script>
-    <script type = "text/javascript" src ="/assets/vendors/angular-route.min.js.map"></script>
+
 
     <link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
 
   </head>
-  <body ng-app = "MyApp">
-
-
-
-    <h1>Hilariash!</h1>
-
+  <body ng-app = "videoApp">
+    <section ng-include="'/views/templates/nav.html'"></section>
       <div id="demo"><h2>Let AJAX, or Tracey change this text</h2></div>
-
-      <button type="button" onclick="getVideos()">Change Content</button>
-
-
-
-      <section ng-include="'/templates/nav.html'"></section>
-
+        <h1>Hilariash!</h1>
+          <button type="button" onclick="getVideos()">Change Content</button>
             <main ng-view>
 
             </main>
 
-            <footer ng-include="'/templates/footer.html'"></footer>
-
-
-
-
-
-            <script type = "text/javascript" src ="./assets/scripts/client.js"></script>
-            <script type = "text/javascript" src = "./assets/scripts/controllers/videoController.js"></script>
+            <footer ng-include="'/views/templates/footer.html'"></footer>
 
   </body>
 </html>

@@ -1,5 +1,4 @@
-
-
+console.log("hey from routes/videos.js");
 var express = require('express');
 var router = express.Router();
 var request = require('request');
@@ -9,7 +8,9 @@ var xhr = new XMLHttpRequest();
 
 //authentication
 xhr.open('POST', 'https://proofapi.herokuapp.com/sessions');
+
 console.log("in videos.js");
+
 xhr.setRequestHeader('Content-Type', 'application/json');
 
 xhr.onreadystatechange = function () {
@@ -46,6 +47,10 @@ xhr.open('GET', 'https://proofapi.herokuapp.com/videos/ef572226-7b56-401b-89fc-7
 
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('X-Auth-Token', 'eFuXWvwaHAFYxb7SbkwhrDu4');
+
+
+
+
 
 xhr.onreadystatechange = function () {
   if (this.readyState === 4) {

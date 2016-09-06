@@ -1,7 +1,8 @@
-myApp.controller("VideoController", ['$scope', '$http', '$filter', function($scope, $http, $filter){
-  console.log("in VideoController!");
-console.log("in VideoController");
-$scope.videos = [];
+videoApp.controller("VideoController", ['$scope', '$http', '$filter', function($scope, $http, $filter){
+
+console.log("in VideoController!");
+
+$scope.allVideos = [];
 
 $scope.modal = {
   info:false,
@@ -15,12 +16,12 @@ $scope.modal = {
 
 $scope.getNewestVideos = function(){
 
-  $http.get('/videos').then(
+  $http.get('/allVideos').then(
     function(response) {
 
       console.log(response.data);
 
-      $scope.videos = response.data;
+      $scope.allVideos = response.data;
 
     }
   );
@@ -28,7 +29,7 @@ $scope.getNewestVideos = function(){
 $scope.view = function(){
   $scope.modal.viewed = !$scope.modal.viewed;
 
-  $http.get('/video/' + $scope.modal.modalVideo.api_id).then(
+  $http.get('/allVideos/' + $scope.modal.modalVideo.api_id).then(
     function(response){
 
       $scope.getVideos();

@@ -4,7 +4,7 @@ var path = require("path");
 //var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended:false });
-
+var router = express.Router();
 var videos = require('./routes/videos');
 
 //------------------------------------------------
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //routes
-app.use('/videos', videos);
+// router.use('/videos', videos);
 
 
 //start server

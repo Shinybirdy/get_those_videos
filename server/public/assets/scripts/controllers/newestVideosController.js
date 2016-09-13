@@ -1,4 +1,4 @@
-videoApp.controller('NewestVideosController', ['$scope', '$http', function ($scope, $http){
+myApp.controller('NewestVideosController', ['$scope', '$http', function ($scope, $http){
 
 console.log("newest controller is running!!!");
 
@@ -50,3 +50,4 @@ console.log("newest controller is running!!!");
      $scope.newestVideosArray.push(addVideoObjectToSend);
 
    }; // end addVideo function
+}]);

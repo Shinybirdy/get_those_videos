@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-  <html ng-app = "myApp">
+  <html>
     <head>
       <meta charset="utf-8">
       <title>Hilariash</title>
       <link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
       <link href = "/styles/style.css" rel="stylesheet" />
+      
     </head>
+    <body ng-app = "myApp">
+      <!-- <header ng-include = "'/views/templates/header.html'"></header> -->
+      <nav ng-include = "'/views/templates/nav.html'"></nav>
+        <div class="text-center"><h2>All of your dreams are coming true.</h2></div>
 
-    <body>
-      <div ng-controller = "IndexController">
-        <section ng-include="'/templates/nav.html'"></section>
-          <div class="demo text-center"><h2>All of your dreams are coming true.</h2></div>
-            <main ng-view>
-<input type = "text" name ="name" value = "" ng-model = "heyThere" placeholder="2way tester" />
-{{heyThere}}
-            </main>
+          <main ng-view></main>
 
-      </div>
-      <footer ng-include="'/views/templates/footer.html'"></footer>
-        <script type = "text/javascript" src ="/assets/vendors/angular.js"></script>
-        <script type = "text/javascript" src ="./assets/scripts/client_app.js"></script>
+          <footer ng-include="'/views/templates/footer.html'"></footer>
+
         <!-- <script type = "text/javascript" src ="/assets/vendors/angular-csp.css"></script> -->
         <script type = "text/javascript" src ="/assets/vendors/angular-resource.min.js"></script>
-
         <script type= "text/javascript" src ="/assets/vendors/smart-table.js"></script>
         <script type = "text/javascript" src ="/assets/vendors/angular-route.js"></script>
-        <script type = "text/javascript" src = "./assets/scripts/controllers/signInController.js"></script>
-        <script type = "text/javascript" src = "./assets/scripts/controllers/newestVideosController.js"></script>
-      
-
-        <!-- <link href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/> -->
+        <script type = "text/javascript" src = "./assets/scripts/SignInController.js"></script>
+        <script type = "text/javascript" src = "./assets/scripts/VideosController.js"></script>
     </body>
-  </html>
+</html>

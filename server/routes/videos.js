@@ -1,13 +1,12 @@
-console.log("hey from routes/videos.js");
+//server side business
+
 var express = require('express');
 var router = express.Router();
 var request = require('request');
 var path = require("path");
 var token;
-// var videoArray = [];
-// var addNewVideoObjectToSend;
 
-//router.post('/signIn', function (req, res) {
+//user sign in----------------------------------------------------------------------------------
 
   request({
   method: 'POST',
@@ -21,7 +20,7 @@ var token;
     token = authResponse.data.attributes.auth_token;
 
     fetchAllVideos();
-    
+
     console.log('Status:', response.statusCode);
     console.log('Headers:', JSON.stringify(response.headers));
     console.log('Response:', body);
@@ -34,7 +33,8 @@ var token;
       console.log(token);
       }
     });
-  //});
+
+  //VIDEOS COLLECTION - get all videos -----------------------------------------
   var fetchAllVideos = function(){
     request({
   method: 'GET',
